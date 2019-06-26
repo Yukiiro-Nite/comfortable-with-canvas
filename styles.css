@@ -1,0 +1,48 @@
+body .reveal,
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal p
+{
+  font-family: 'Quicksand', sans-serif;
+  text-transform: none;
+}
+
+canvas.with-grid {
+  image-rendering: crisp-edges;
+  border-radius: 8px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAGUlEQVQIHQEOAPH/A////wEBAQMBAQF/f38nTQSHVixYJAAAAABJRU5ErkJggg==);
+  background-size: 20px 20px;
+  box-shadow: 0 0 8px 0 inset black;
+}
+
+code {
+  font-size: 1em;
+}
+
+.rise-and-wiggle {
+  animation: 2s ease-in 0s 1 normal forwards running rise-and-wiggle;
+}
+
+@keyframes rise-and-wiggle {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: 0 0 8px 2px gray;
+    transform: rotate(0deg);
+  }
+  55% {transform: rotate(5deg);}
+  60% {transform: rotate(-5deg);}
+  65% {transform: rotate(5deg);}
+  70% {transform: rotate(-5deg);}
+  75% {
+    transform: rotate(0deg);
+    box-shadow: 0 0 8px 2px gray;
+  }
+  100% {
+    box-shadow: 0 0 0 1px gray;
+  }
+}

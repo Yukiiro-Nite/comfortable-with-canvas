@@ -1,0 +1,32 @@
+<!-- https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas -->
+<canvas-example name="Edit image data">
+  const size = 100, x = canvas.width / 2 - size / 2, y = canvas.height / 2 - size / 2
+  const backCanvas = document.createElement('canvas')
+  const backContext = backCanvas.getContext('2d')
+  const video = document.getElementById('video')
+
+  function draw() {
+    backContext.drawImage(video, x, y, size, size)
+
+    const imageData = backContext.getImageData(0, 0, canvas.width, canvas.height)
+    let currentData = imageData.data
+    let r, g, b, l
+
+    for(let i=0; i &lt; currentData.length; i += 4) {
+      r = currentData[i + 0]
+      g = currentData[i + 1]
+      b = currentData[i + 2]
+
+      l = Math.floor(r*0.299 + g*0.587 + b*0.114)
+
+      currentData[i + 0] = l
+      currentData[i + 1] = l
+      currentData[i + 2] = l
+    }
+    
+    context.putImageData(imageData, 0, 0)
+    requestAnimationFrame(draw)
+  }
+  
+  requestAnimationFrame(draw)
+</canvas-example>

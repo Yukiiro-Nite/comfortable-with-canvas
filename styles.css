@@ -17,8 +17,10 @@ canvas.with-grid {
   box-shadow: 0 0 8px 0 inset black;
 }
 
-code {
+.reveal pre code {
   font-size: 1em;
+  max-height: 350px;
+  overflow: auto;
 }
 
 .rise-and-wiggle {

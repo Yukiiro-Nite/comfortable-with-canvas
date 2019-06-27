@@ -1,0 +1,15 @@
+<canvas-example name="Draw a Square">
+  const size = 100
+  const x = canvas.width / 2 - size / 2
+  const y = canvas.height / 2 - size / 2
+
+  // setup context
+
+  context.beginPath()
+  context.moveTo(x, y)
+  context.lineTo(x + size, y)
+  context.lineTo(x + size, y + size)
+  context.lineTo(x, y + size)
+  context.closePath()
+  context.stroke()
+</canvas-example>

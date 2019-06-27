@@ -1,0 +1,14 @@
+<canvas-example name="Draw an Image">
+  const size = 100
+  const x = canvas.width / 2 - size / 2
+  const y = canvas.height / 2 - size / 2
+  const img = document.createElement('img')
+
+  img.src = "https://placekitten.com/200/200"
+  img.id = "cat"
+  img.hidden = true
+  img.onload = function() {
+    context.drawImage(img, x, y, size, size)
+  }
+  document.body.append(img)
+</canvas-example>

@@ -1,0 +1,20 @@
+<canvas-example name="Draw from webcam">
+    const size = 100, x = canvas.width / 2 - size / 2, y = canvas.height / 2 - size / 2
+    let video = document.createElement('video')
+    video.id = 'video'
+    video.hidden = true
+    video.setAttribute('playsinline', 'true')
+    video.setAttribute('autoplay', 'true')
+
+    navigator.mediaDevices.getUserMedia({video: true}).then(function(stream) {
+      video.srcObject = stream
+      requestAnimationFrame(draw)
+    })
+
+    function draw() {
+      context.drawImage(video, x, y, size, size)
+      requestAnimationFrame(draw)
+    }
+
+    document.body.append(video)
+  </canvas-example>

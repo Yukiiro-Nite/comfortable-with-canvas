@@ -1,0 +1,19 @@
+<p>At this point, you may need some sort of event loop.</p>
+<pre>
+  <code class="js" data-trim>
+    const data = { x: 0, y: 0, size: 100, sprite: img }
+
+    function update() {
+      // update data in here and then draw
+      draw()
+      requestAnimationFrame(update)
+    }
+
+    function draw() {
+      const { x, y, size, sprite } = data
+      context.drawImage(sprite, x, y, size, size)
+    }
+
+    requestAnimationFrame(update)
+  </code>
+</pre>

@@ -1,0 +1,15 @@
+<canvas-example name="Draw a Line">
+  const size = 100
+  const x = canvas.width / 2 - size / 2
+  const y = canvas.height / 2
+
+  context.strokeStyle = "#000000"
+  context.lineWidth = 8
+  context.lineCap = "round"
+  context.lineJoin = "round"
+
+  context.beginPath()
+  context.moveTo(x, y)
+  context.lineTo(x + size, y)
+  context.stroke()
+</canvas-example>

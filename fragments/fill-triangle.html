@@ -1,0 +1,14 @@
+<canvas-example name="Fill a Triangle">
+  const size = 50
+  const x = canvas.width / 2
+  const y = canvas.height / 2
+
+  context.fillStyle = "#444444"
+
+  context.beginPath()
+  context.moveTo(x, y - size)
+  context.lineTo(x - size, y + size)
+  context.lineTo(x + size, y + size)
+  context.closePath()
+  context.fill()
+</canvas-example>

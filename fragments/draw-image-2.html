@@ -1,0 +1,14 @@
+<canvas-example name="Move an Image">
+  const size = 100, x = canvas.width / 2 - size / 2, y = canvas.height / 2 - size / 2
+  const img = document.getElementById('cat')
+
+  function draw() {
+    const offsetY = Math.sin(Date.now() / 500) * 10
+
+    context.clearRect(0, 0, canvas.width, canvas.height)
+    context.drawImage(img, x, y + offsetY, size, size)
+    requestAnimationFrame(draw)
+  }
+
+  requestAnimationFrame(draw)
+</canvas-example>

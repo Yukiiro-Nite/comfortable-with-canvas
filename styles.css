@@ -17,6 +17,11 @@ canvas.with-grid {
   box-shadow: 0 0 8px 0 inset black;
 }
 
+canvas-example[webgl] canvas.with-grid {
+  box-shadow: none;
+  border-radius: 0;
+}
+
 .reveal pre code {
   font-size: 1em;
   max-height: 350px;

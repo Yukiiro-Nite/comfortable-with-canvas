@@ -1,0 +1,30 @@
+<canvas-example name="A simple Drawing app">
+	const rect = canvas.getBoundingClientRect()
+	let lastPos = undefined
+	let mouseDown = false
+
+	canvas.addEventListener('mousedown', function () {
+		mouseDown = true
+	})
+
+	document.addEventListener('mouseup', function () {
+		mouseDown = false
+	})
+
+	canvas.addEventListener('mousemove', function (event) {
+		const currentX = event.layerX - event.target.offsetLeft
+		const currentY = event.layerY - event.target.offsetTop
+
+		if(lastPos !== undefined &amp;&amp; mouseDown) {
+			context.beginPath()
+			context.moveTo(lastPos.x, lastPos.y)
+			context.lineTo(currentX, currentY)
+			context.stroke()
+		}
+
+		lastPos = {
+			x: currentX,
+			y: currentY
+		}
+	})
+</canvas-example>

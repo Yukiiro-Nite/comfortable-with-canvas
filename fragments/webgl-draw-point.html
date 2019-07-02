@@ -1,0 +1,20 @@
+<canvas-example name="Draw a point with webGL" webgl>
+  const gl = canvas.getContext('webgl')
+  const vertShader = `
+    void main() {
+      gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
+      gl_PointSize = 10.0;
+    }
+  `
+  const fragShader = `
+    void main() {
+      gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+    }
+  `
+
+  initShaders(gl, vertShader, fragShader)
+
+  gl.clearColor(0, 0, 0, 1)
+  gl.clear(gl.COLOR_BUFFER_BIT)
+  gl.drawArrays(gl.POINTS, 0, 1)
+</canvas-example>

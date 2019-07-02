@@ -23,172 +23,19 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+
+		<!-- External Libraries -->
+		<script src="lib/js/three.min.js"></script>
+		<!-- <script src="lib/js/aframe-master.min.js"></script> -->
+
+		<!-- Internal Scripts -->
 		<script src="js/components/canvas-example.js"></script>
 		<script src="js/components/html-fragment.js"></script>
 		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides">
-				<section id="preview"></section>
-				<section class="section-intro">
-					<section>
-						<h2>Getting comfortable with &lt;canvas /&gt;</h2>
-					</section>
-					<section>
-						<h2>What is a canvas anyways?</h2>
-					</section>
-					<section id="show-canvas-slide">
-						<h2>This is a canvas.</h2>
-						<canvas></canvas>
-						<p class="fragment fade-up">A canvas is transparent and empty by default!</p>
-					</section>
-					<section>
-						<p>Hard to see? Let's add some css.</p>
-						<pre>
-							<code class="css" data-trim>
-								canvas {
-									image-rendering: crisp-edges;
-									border-radius: 8px;
-									background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAGUlEQVQIHQEOAPH/A////wEBAQMBAQF/f38nTQSHVixYJAAAAABJRU5ErkJggg==);
-									background-size: 20px 20px;
-									box-shadow: 0 0 8px 0 inset black;
-								}
-							</code>
-						</pre>
-						<canvas class="with-grid"></canvas>
-					</section>
-				</section>
-				<section class="section-examples">
-					<section>
-						<h2>What can I do with a canvas?</h2>
-					</section>
-					<section>
-						<p>2-D Things</p>
-					</section>
-					<section>
-						<p>3-D Things</p>
-					</section>
-					<section>
-						<p>XR Things</p>
-					</section>
-					<section>
-						<p>???-D Things</p>
-					</section>
-				</section>
-				<section class="section-js-api">
-					<section>
-						<html-fragment src="fragments/draw-rectangle.html"></html-fragment>
-					</section>
-					<section>
-						<canvas-example name="Draw a Circle">
-							const radius = 50
-							const x = canvas.width / 2
-							const y = canvas.height / 2
-
-							context.beginPath()
-							context.arc(x, y, radius, 0, 2 * Math.PI)
-							context.fill()
-						</canvas-example>
-					</section>
-					<section>
-						<canvas-example name="Draw a Triangle">
-							const size = 50
-							const x = canvas.width / 2
-							const y = canvas.height / 2
-
-							context.beginPath()
-							context.moveTo(x, y - size)
-							context.lineTo(x - size, y + size)
-							context.lineTo(x + size, y + size)
-							context.closePath()
-							context.fill()
-						</canvas-example>
-					</section>
-					<section>
-						<canvas-example name="Draw an image">
-							const size = 100
-							const x = canvas.width / 2 - size / 2
-							const y = canvas.height / 2 - size / 2
-							const img = document.createElement('img')
-
-							img.src = "https://placekitten.com/200/200"
-							img.id = "cat"
-							img.hidden = true
-							img.onload = function() {
-								context.drawImage(img, x, y, size, size)
-							}
-							document.body.append(img)
-						</canvas-example>
-					</section>
-					<section>
-						<canvas-example name="Make it move">
-							const size = 100, x = canvas.width / 2 - size / 2, y = canvas.height / 2 - size / 2
-							const img = document.getElementById('cat')
-
-							function draw() {
-								const offsetY = Math.sin(Date.now() / 500) * 10
-
-								context.clearRect(0, 0, canvas.width, canvas.height)
-								context.drawImage(img, x, y + offsetY, size, size)
-								requestAnimationFrame(draw)
-							}
-
-							requestAnimationFrame(draw)
-						</canvas-example>
-					</section>
-					<section>
-						<p>At this point, you probably need some sort of event loop.</p>
-						<pre>
-							<code class="js" data-trim>
-								const data = { x: 0, y: 0, size: 100, sprite: img }
-
-								function update() {
-									// update data in here and then draw
-									draw()
-									requestAnimationFrame(update)
-								}
-
-								function draw() {
-									const { x, y, size, sprite } = data
-									context.drawImage(sprite, x, y, size, size)
-								}
-
-								requestAnimationFrame(update)
-							</code>
-						</pre>
-					</section>
-					<section>
-						<h3>Other ways to draw with 2D context</h3>
-						<ul>
-							<li>fillStyle, strokeStyle</li>
-							<li>getImageData(), putImageData()</li>
-							<li>strokeRect(), strokeText(), stroke()</li>
-							<li>save(), restore()</li>
-							<li>translate(), scale(), rotate(), transform()</li>
-						</ul>
-						<div>
-								<a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D">
-									MDN documentation on 2D context
-								</a>
-						</div>
-					</section>
-				</section>
-				<section class="section-webgl-api">
-					<section>
-						webgl
-					</section>
-				</section>
-				<section class="section-summary">
-					<section>
-						<p>When should you use canvas?</p>
-						<p class="fragment fade-up">When should you not use canvas?</p>
-					</section>
-					<section>
-						Canvas vs SVG
-					</section>
-				</section>
-			</div>
+			<div id="slides" class="slides"></div>
 		</div>
 
 		<script src="js/build-page.js"></script>
@@ -211,7 +58,7 @@
 
 			Reveal.addEventListener( 'slidechanged', event => {
 				switch(event.currentSlide.id) {
-					case "show-canvas-slide":
+					case "this-is-canvas":
 						const canvas = event.currentSlide.querySelector('canvas')
 						canvas.className = ""
 						setTimeout(() => {

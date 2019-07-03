@@ -3,16 +3,13 @@ const fragments = [
     'intro',
     'what-is-canvas',
     'this-is-canvas',
-    'canvas-hard-to-see'
+    'canvas-hard-to-see',
+    'what-can-canvas-do'
   ],
   [
-    'what-can-canvas-do',
     '2D-examples',
-    '3D-examples',
-    'XR-examples'
-  ],
-  [
     'context-api',
+    'hello-canvas',
     'stroke-line',
     'stroke-square',
     'stroke-square-2',
@@ -20,9 +17,7 @@ const fragments = [
     'fill-triangle',
     'fill-triangle-2',
     'fill-square',
-    'fill-square-2',
     'fill-circle',
-    'fill-circle-2',
     'draw-image',
     'draw-image-2',
     'event-loop',
@@ -31,15 +26,21 @@ const fragments = [
     'drawing-program',
   ],
   [
+    '3D-examples',
     'webgl-api',
     'webgl-draw-point',
     'webgl-initShaders',
+    'three-js',
     'three-cube',
+    'XR-examples',
+    'a-frame',
     'a-frame-cube'
   ],
   [
     'canvas-vs-others',
-    'canvas-accessibility'
+    'canvas-accessibility',
+    'questions',
+    'thank-you'
   ]
 ]
 const slides = document.querySelector('#slides')

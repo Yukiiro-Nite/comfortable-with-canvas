@@ -38,39 +38,39 @@ class CanvasExample extends HTMLElement {
 
       function initShaders(gl, vertSource, fragSource) {
         const vertShader = gl.createShader(gl.VERTEX_SHADER)
-          const fragShader = gl.createShader(gl.FRAGMENT_SHADER)
-          gl.shaderSource(vertShader, vertSource)
-          gl.shaderSource(fragShader, fragSource)
-          gl.compileShader(vertShader)
-          gl.compileShader(fragShader)
-          const errors = [vertShader, fragShader].map(shader => ({
-            shader,
-            type: gl.getShaderParameter(shader, gl.SHADER_TYPE),
-            compileStatus: gl.getShaderParameter(shader, gl.COMPILE_STATUS)
-          }))
-          .filter(({compileStatus}) => !compileStatus)
-          .map(({shader, type}) => {
-            const log = gl.getShaderInfoLog(shader)
-            console.log("Problem compiling shader type: ", type)
-            console.log(log)
-            return true
-          })
-          if(errors.length > 0) {
-            console.log('Shaders have errors, halting...')
-            return
-          }
-          const program = gl.createProgram()
-          gl.attachShader(program, vertShader)
-          gl.attachShader(program, fragShader)
-          gl.linkProgram(program)
-          const linkStatus = gl.getProgramParameter(program, gl.LINK_STATUS)
-          if(!linkStatus) {
-            console.log('Problem Linking shaders')
-            console.log(gl.getProgramInfoLog(program))
-            return
-          }
-          gl.useProgram(program)
-          gl.program = program
+        const fragShader = gl.createShader(gl.FRAGMENT_SHADER)
+        gl.shaderSource(vertShader, vertSource)
+        gl.shaderSource(fragShader, fragSource)
+        gl.compileShader(vertShader)
+        gl.compileShader(fragShader)
+        const errors = [vertShader, fragShader].map(shader => ({
+          shader,
+          type: gl.getShaderParameter(shader, gl.SHADER_TYPE),
+          compileStatus: gl.getShaderParameter(shader, gl.COMPILE_STATUS)
+        }))
+        .filter(({compileStatus}) => !compileStatus)
+        .map(({shader, type}) => {
+          const log = gl.getShaderInfoLog(shader)
+          console.log("Problem compiling shader type: ", type)
+          console.log(log)
+          return true
+        })
+        if(errors.length > 0) {
+          console.log('Shaders have errors, halting...')
+          return
+        }
+        const program = gl.createProgram()
+        gl.attachShader(program, vertShader)
+        gl.attachShader(program, fragShader)
+        gl.linkProgram(program)
+        const linkStatus = gl.getProgramParameter(program, gl.LINK_STATUS)
+        if(!linkStatus) {
+          console.log('Problem Linking shaders')
+          console.log(gl.getProgramInfoLog(program))
+          return
+        }
+        gl.useProgram(program)
+        gl.program = program
       }
 
       ${this.htmlDecode(script)}

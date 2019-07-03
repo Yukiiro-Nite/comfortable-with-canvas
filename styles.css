@@ -53,3 +53,47 @@ canvas-example[webgl] canvas.with-grid {
     box-shadow: 0 0 0 1px gray;
   }
 }
+
+.example-grid {
+  display: grid;
+  grid-gap: 32px;
+  grid-template-columns: 256px 256px 256px;
+  align-items: center;
+  justify-content: center;
+}
+
+.AppExample-link {
+  padding: 0;
+  line-height: 0;
+  border: none;
+  position: relative;
+  display: inline-block;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px gray;
+}
+
+.AppExample-link .AppExample-static {
+  padding: 0;
+  margin: 0;
+  max-width: 256px;
+  max-height: 256px;
+  width: 100%;
+  border: none;
+}
+.AppExample-link .AppExample-static.has-gif {
+  position: absolute;
+}
+
+.AppExample-link .AppExample-static.has-gif:hover {
+  opacity: 0;
+}
+
+.AppExample-link .AppExample-gif {
+  padding: 0;
+  margin: 0;
+  max-width: 256px;
+  max-height: 256px;
+  width: 100%;
+  border: none;
+}

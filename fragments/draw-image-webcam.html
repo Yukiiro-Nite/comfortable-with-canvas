@@ -3,7 +3,6 @@
     let video = document.createElement('video')
     video.id = 'video'
     video.hidden = true
-    video.setAttribute('playsinline', 'true')
     video.setAttribute('autoplay', 'true')
 
     navigator.mediaDevices.getUserMedia({video: true}).then(function(stream) {

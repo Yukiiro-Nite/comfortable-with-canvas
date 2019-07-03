@@ -1,0 +1,12 @@
+<canvas-example name="Getting started">
+  // assuming there's an element in the document with an id we know...
+  const canvasElement = document.getElementById("Getting started")
+  const canvasContext = canvasElement.getContext('2d')
+  const x = canvasElement.width / 2
+  const y = canvasElement.height / 2
+
+  canvasContext.fillStyle = "#000000"
+  canvasContext.font = 'bold 32px monospace'
+  canvasContext.textAlign = "center"
+  canvasContext.fillText("Hello World!", x, y)
+</canvas-example>

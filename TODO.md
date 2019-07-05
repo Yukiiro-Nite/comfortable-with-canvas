@@ -1,0 +1,4 @@
+- Add more examples in between code portions
+- Add a basic example with html
+- Show what happens if you don't call the clear method
+- Add examples of using canvas with popular js frameworks
